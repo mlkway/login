@@ -9,6 +9,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toDrawable
+import androidx.core.view.isVisible
+import androidx.core.widget.doOnTextChanged
 import com.raywenderlich.shopapiloginscreen.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -26,9 +29,37 @@ class MainActivity : AppCompatActivity() {
             arrayOf("New user? ", " Sign up ", "here"),
             arrayOf(R.color.black,R.color.purple_500,R.color.black))
             signIn()
+            editTextCatcher()
+
+        
 
 
 
+
+    }
+
+    private fun isEmailValid(email:String):Boolean{
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    private fun editTextCatcher(){
+        binding.apply {
+            emailAdreess.isEndIconVisible = false
+            textInputLayout.isEndIconVisible = false
+        }
+
+        binding.emailAdreesTxt.doOnTextChanged { text, start, before, count ->
+
+
+                binding.emailAdreess.isEndIconVisible = isEmailValid(text.toString())
+
+        }
+
+        binding.paswordTxt.doOnTextChanged { text, start, before, count ->
+
+                binding.textInputLayout.isEndIconVisible = text.let { it.toString().length >= 6 }
+
+        }
 
     }
 
