@@ -1,4 +1,4 @@
-package com.raywenderlich.shopapiloginscreen.network
+package com.raywenderlich.network
 
 import com.raywenderlich.model.Auth
 import retrofit2.Response

@@ -1,4 +1,4 @@
-package com.raywenderlich.shopapiloginscreen.network
+package com.raywenderlich.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -17,7 +17,7 @@ object ApiService {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
-    private fun createUserService():UserService{
+    private fun createUserService(): UserService {
         val retrofitBuilder = Retrofit.Builder()
         retrofitBuilder.baseUrl("https://ktorhighsteaks.herokuapp.com/")
         retrofitBuilder.client(
